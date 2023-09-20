@@ -24,7 +24,9 @@ jobs:
            sudo apt install gcc-10 g++-10 
            sudo apt-get install autoconf automake libtool autopoint
     - name: build
-      run: sudo WITH_MYSQL=1 WITH_LZO=1 USE_AVX2=0 sh build.sh
+      run: |
+          sudo ls
+          sudo WITH_MYSQL=1 WITH_LZO=1 USE_AVX2=0 ./build.sh
     - name: Download a Build Artifact
       uses: actions/download-artifact@v2.1.1
       with:
