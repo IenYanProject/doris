@@ -1,0 +1,31 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: install env
+      run: |
+           sudo apt install build-essential openjdk-8-jdk maven cmake byacc flex automake libtool-bin bison binutils-dev libiberty-dev zip unzip libncurses5-dev curl git ninja-build python
+           sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa
+           sudo apt update
+           sudo apt install gcc-10 g++-10 
+           sudo apt-get install autoconf automake libtool autopoint
+    - name: build
+      run: USE_AVX2=0 sh build.sh
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v2.1.1
+      with:
+    # Artifact name
+          name: out
+    # Destination path
+          path: /output
