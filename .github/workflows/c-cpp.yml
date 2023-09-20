@@ -23,6 +23,8 @@ jobs:
            sudo apt update
            sudo apt install gcc-10 g++-10 
            sudo apt-get install autoconf automake libtool autopoint
+           sudo export REPOSITORY_URL=https://doris-thirdparty-repo.bj.bcebos.com/thirdparty
+           sudo sh build-thirdparty.sh
     - name: build
       run: |
           sudo ls
