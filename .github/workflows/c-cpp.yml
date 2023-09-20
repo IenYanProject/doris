@@ -13,11 +13,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4.7.0
     - name: install env
       run: |
            sudo apt-get update
            sudo apt-get upgrade
-           sudo apt install build-essential openjdk-8-jdk maven cmake byacc flex automake libtool-bin bison binutils-dev libiberty-dev zip unzip libncurses5-dev curl git ninja-build python
+           sudo apt install build-essential openjdk-8-jdk maven cmake byacc flex automake libtool-bin bison binutils-dev libiberty-dev zip unzip libncurses5-dev curl git ninja-build 
            sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa
            sudo apt update
            sudo apt install gcc-10 g++-10 
